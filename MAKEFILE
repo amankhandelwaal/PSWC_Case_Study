@@ -1,32 +1,18 @@
 CC = gcc
-
-
-
-all: main
-
-main: functions.o header.h
-    $(CC)  -o main main.c functions.o
-CC = gcc
-
-
-
-all: main
-
-main: functions.o
-    $(CC)  -o main main.c functions.o
-
-functions.o: functions.c header.h
-    $(CC)  -c functions.c
-
-clean:
-    rm -f *.o main
+CFLAGS = -Wall -Wextra -std=c99
+TARGET = main
+SRC = main.c functions.c
+OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean
 
-functions.o: functions.c header.h
-    $(CC)  -c functions.c
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+%.o: %.c header.h
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-    rm -f *.o main  # Remove object files and executable
-
-.PHONY: all clean
+	rm -f $(OBJ) $(TARGET)

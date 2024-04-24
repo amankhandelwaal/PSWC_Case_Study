@@ -2,11 +2,22 @@
 #define HEADER_H
 
 #define MAX_STUDENTS 10
-#define MAX_SUBJECTS 5
+#define MAX_SUBJECTS 3
+
+typedef struct
+{
+  char name[50];
+  int isa1[MAX_SUBJECTS];
+  int isa2[MAX_SUBJECTS];
+  int esa[MAX_SUBJECTS];
+  int internal[MAX_SUBJECTS];
+  int credits[MAX_SUBJECTS];
+  float sgpa;
+} Student;
 
 int get_num_students(void);
-void get_student_details(char names[][100], int isa1[][MAX_SUBJECTS], int isa2[][MAX_SUBJECTS], int esa[][MAX_SUBJECTS], int internal[][MAX_SUBJECTS], int credits[][MAX_SUBJECTS]);
-float calculate_sgpa(int isa1[][MAX_SUBJECTS], int isa2[][MAX_SUBJECTS], int esa[][MAX_SUBJECTS], int internal[][MAX_SUBJECTS], int credits[][MAX_SUBJECTS], int num_students);
-void display_grade_card(char name[], int isa1[][MAX_SUBJECTS], int isa2[][MAX_SUBJECTS], int esa[][MAX_SUBJECTS], int internal[][MAX_SUBJECTS], int credits[][MAX_SUBJECTS], int num_students);
+void enter_student_details(Student students[], int num_students);
+void calculate_sgpa(Student students[], int num_students);
+void display_grade_card(Student students[], int num_students);
 
 #endif
