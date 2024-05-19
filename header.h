@@ -16,8 +16,10 @@ typedef struct
 } Student;
 
 int get_num_students(void);
-void enter_student_details(Student students[], int num_students);
+void load_student_data(Student students[], int *num_students);
+void save_student_data(Student students[], int num_students);
 void calculate_sgpa(Student students[], int num_students);
 void display_grade_card(Student students[], int num_students);
+void update_student_details(Student students[], int num_students);
 
 #endif
